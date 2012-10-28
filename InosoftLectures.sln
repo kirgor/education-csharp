@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InosoftLectures", "Lecture1\Lecture1.csproj", "{00704BF5-2D4C-43E8-85D4-3D8BE08276CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lecture1", "Lecture1\Lecture1.csproj", "{00704BF5-2D4C-43E8-85D4-3D8BE08276CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice1", "Practice1\Practice1.csproj", "{64CB60A5-0D81-4B1B-8959-048B49733CE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{00704BF5-2D4C-43E8-85D4-3D8BE08276CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00704BF5-2D4C-43E8-85D4-3D8BE08276CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00704BF5-2D4C-43E8-85D4-3D8BE08276CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64CB60A5-0D81-4B1B-8959-048B49733CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CB60A5-0D81-4B1B-8959-048B49733CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CB60A5-0D81-4B1B-8959-048B49733CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CB60A5-0D81-4B1B-8959-048B49733CE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
