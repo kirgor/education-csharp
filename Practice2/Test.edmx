@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TestModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TestModelStoreContainer">
+          <EntitySet Name="Groups" EntityType="TestModel.Store.Groups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Students" EntityType="TestModel.Store.Students" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Groups_Students" Association="TestModel.Store.FK_Groups_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Groups" Association="TestModel.Store.FK_Students_Groups">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="HeadId" Type="int" />
+          <Property Name="Motto" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="GroupId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Groups_Students">
+          <End Role="Students" Type="TestModel.Store.Students" Multiplicity="0..1" />
+          <End Role="Groups" Type="TestModel.Store.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="HeadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Groups">
+          <End Role="Groups" Type="TestModel.Store.Groups" Multiplicity="0..1" />
+          <End Role="Students" Type="TestModel.Store.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TestEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Groups" EntityType="TestModel.Group" />
+          <EntitySet Name="Students" EntityType="TestModel.Student" />
+          <AssociationSet Name="FK_Groups_Students" Association="TestModel.FK_Groups_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Groups" Association="TestModel.FK_Students_Groups">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="HeadId" Type="Int32" />
+          <Property Name="Motto" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Head" Relationship="TestModel.FK_Groups_Students" FromRole="Groups" ToRole="Students" />
+          <NavigationProperty Name="Students" Relationship="TestModel.FK_Students_Groups" FromRole="Groups" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" />
+          <NavigationProperty Name="Groups" Relationship="TestModel.FK_Groups_Students" FromRole="Students" ToRole="Groups" />
+          <NavigationProperty Name="Group" Relationship="TestModel.FK_Students_Groups" FromRole="Students" ToRole="Groups" />
+        </EntityType>
+        <Association Name="FK_Groups_Students">
+          <End Role="Students" Type="TestModel.Student" Multiplicity="0..1" />
+          <End Role="Groups" Type="TestModel.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="HeadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Groups">
+          <End Role="Groups" Type="TestModel.Group" Multiplicity="0..1" />
+          <End Role="Students" Type="TestModel.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TestModelStoreContainer" CdmEntityContainer="TestEntities">
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="TestModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HeadId" ColumnName="HeadId" />
+                <ScalarProperty Name="Motto" ColumnName="Motto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="TestModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
