@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleApplication4
+namespace Practice2
 {
     internal class Program
     {

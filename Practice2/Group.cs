@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConsoleApplication4
+namespace Practice2
 {
     using System;
     using System.Collections.Generic;
