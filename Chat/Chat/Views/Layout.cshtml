@@ -1,0 +1,34 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Styles/Application.css" />
+    @if (ViewBag.Style != null)
+    {
+        <link rel="stylesheet" type="text/css" href="~/Styles/@(ViewBag.Style).css" />
+    }
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <div id="logo">LOGO</div>
+    </header>
+
+    <div id="middle">
+        <div id="menu">
+            <a href="">Home</a>
+            <a href="">Nonhome</a>
+        </div>
+        <div id="content">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer>
+        @RenderSection("Haha", false)
+    </footer>
+</body>
+</html>

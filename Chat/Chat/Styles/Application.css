@@ -1,0 +1,66 @@
+﻿body {
+    margin: 0 0 0 0;
+    min-width: 800px;
+    background-color: #dddddd;
+    font-family: 'Comic Sans MS';
+}
+
+header, footer {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+}
+
+header {
+    border-bottom: 1px solid #aaaaaa;
+}
+
+footer {
+    border-top: 1px solid #aaaaaa;
+}
+
+#logo {
+    font-size: 48px;
+    font-family: Aharoni;
+    position: relative;
+    top: 0.5em;
+    left: 0.5em;
+}
+
+#middle {
+    background-color: white;
+    border-left: 1px solid #aaaaaa;
+    border-right: 1px solid #aaaaaa;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 1000px;
+}
+
+#menu {
+    float: left;
+    width: 100px;
+}
+
+    #menu > a {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: black;
+        text-align: center;
+    }
+
+        #menu > a:visited {
+            color: #aa0000;
+        }
+
+        #menu > a:hover {
+            color: #e00000;
+        }
+
+#content {
+    border-left: 1px dotted #cccccc;
+    margin-left: 100px;
+    height: 1000px;
+}
