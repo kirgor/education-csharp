@@ -1,0 +1,29 @@
+﻿#content {
+    padding: 20px;
+}
+
+    #content p {
+        display: block;
+        margin-top: 0;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+p > input {
+    position: absolute;
+    left: 200px;
+}
+
+#message {
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    top: 30px;
+    width: 300px;
+    background-color: #ff6767;
+    border: 1px solid yellow;
+}
+
+    #message:empty {
+        display: none;
+    }
