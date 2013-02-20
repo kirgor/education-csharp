@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="~/Scripts/jquery-1.9.0.js"></script>
+    <script src="~/Scripts/Math.uuid.js"></script>
+    <script src="~/Scripts/@(ViewBag.Script).js"></script>
     <link rel="stylesheet" type="text/css" href="~/Styles/Application.css" />
     @if (ViewBag.Style != null)
     {
@@ -15,6 +18,22 @@
 <body>
     <header>
         <div id="logo">LOGO</div>
+        <div id="auth">
+            @if (Session["User"] == null)
+            {
+                <form action="/Auth/Login" method="post">
+                    <input type="text" name="email" />
+                    <input type="password" name="password" />
+                    <input type="submit" value="Log in" />
+                </form>
+                <a href="/Auth/Register">Register</a>
+            }
+            else
+            {
+                <span>Hello, @(((MvcApplication2.Data.User)Session["User"]).Name)!</span>
+                <a href="/Auth/Logout">Log out</a>
+            }
+        </div>
     </header>
 
     <div id="middle">

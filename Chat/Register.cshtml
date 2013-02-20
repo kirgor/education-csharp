@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Register";
+    ViewBag.Style = "Register";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<form action="/Auth/Register" method="post">
+    <p>
+        E-mail:
+        <input required="required" type="email" name="email" value="@ViewBag.Email" />
+    </p>
+    <p>
+        Password:
+        <input required="required" type="password" name="password" />
+    </p>
+    <p>
+        Confirm password:
+        <input required="required" type="password" name="passwordConfirm" />
+    </p>
+    <p>
+        Name:
+        <input required="required" type="text" name="name" value="@ViewBag.Name" />
+    </p>
+    <p>
+        Last name:
+        <input required="required" type="text" name="lastName" value="@ViewBag.LastName" />
+    </p>
+    <input type="submit" value="Register" />
+</form>
+<p id="message">@ViewBag.Message</p>

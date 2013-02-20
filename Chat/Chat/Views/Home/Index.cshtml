@@ -2,4 +2,28 @@
     Layout = "~/Views/Layout.cshtml";
     ViewBag.Title = DateTime.Now;
     ViewBag.Style = "Home";
+    ViewBag.Script = "Home";
+    ViewBag.User = Session["User"];
+    long lastId = 0;
+}
+
+<div id="messages">
+    @foreach (MvcApplication2.Models.MessageModel item in ViewBag.Messages)
+    {
+        <div class="message delivered">
+            <div>@item.Author, @item.Time</div>
+            <div>@item.Text</div>
+        </div>
+        lastId = item.Id;
+    }
+</div>
+
+@if (ViewBag.User != null)
+{
+    <textarea id="messageInput" rows="5" name="text"></textarea>
+    <button id="submitMessage">Send</button>
+    <input id="lastIdField" type="hidden" value="@(lastId)" />
+    <input id="idField" type="hidden" value="@(ViewBag.User.Id)" />
+    <input id="emailField" type="hidden" value="@(ViewBag.User.Email)" />
+    <input id="authorField" type="hidden" value="@(ViewBag.User.Name) @(ViewBag.User.LastName)" />
 }

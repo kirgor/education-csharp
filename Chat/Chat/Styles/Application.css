@@ -1,7 +1,7 @@
 ﻿body {
     margin: 0 0 0 0;
     min-width: 800px;
-    background-color: #dddddd;
+    background-color: #512222;
     font-family: 'Comic Sans MS';
 }
 
@@ -13,6 +13,7 @@ header, footer {
 
 header {
     border-bottom: 1px solid #aaaaaa;
+    position: relative;
 }
 
 footer {
@@ -63,4 +64,10 @@ footer {
     border-left: 1px dotted #cccccc;
     margin-left: 100px;
     height: 1000px;
+}
+
+#auth {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }

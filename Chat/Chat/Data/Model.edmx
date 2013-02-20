@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ChatModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ChatModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="ChatModelStoreContainer">
           <EntitySet Name="Message" EntityType="ChatModel.Store.Message" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="ChatModel.Store.User" store:Type="Tables" Schema="dbo" />
@@ -21,6 +21,7 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Text" Type="text" Nullable="false" />
           <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -44,8 +45,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ChatModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -66,6 +66,7 @@
           <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="User" Relationship="ChatModel.FK_Message_Message" FromRole="Message" ToRole="User" />
+          <Property Type="Guid" Name="SessionId" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -99,6 +100,7 @@
           <EntitySetMapping Name="Messages">
             <EntityTypeMapping TypeName="ChatModel.Message">
               <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
@@ -137,6 +139,12 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams>
+      <Diagram DiagramId="22999411d9cc432fb21cae7f54b71d38" Name="Diagram1">
+        <EntityTypeShape EntityType="ChatModel.Message" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChatModel.User" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="ChatModel.FK_Message_Message" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
   </Designer>
 </edmx:Edmx>

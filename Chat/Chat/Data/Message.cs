@@ -18,6 +18,7 @@ namespace MvcApplication2.Data
         public int UserId { get; set; }
         public string Text { get; set; }
         public System.DateTime Time { get; set; }
+        public Nullable<System.Guid> SessionId { get; set; }
     
         public virtual User User { get; set; }
     }
